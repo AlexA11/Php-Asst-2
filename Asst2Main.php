@@ -219,7 +219,7 @@ function ResultsForm()
 	OpenConnectionandDatabase();
 	$Values = array($BandName, $NumCd, $CdPrice, $MangerFeeDec,  $recordingPercent, $advanceValue, $DistFee, $ManuFac, $GigDate);
 	$DataTypes = array("varchar", "integer", "decimal", "decimal", "decimal", "decimal", "decimal", "decimal", "date");
-	$Insert = InsertIntoTable ("Band", $Values, $DataTypes);
+	$Insert = InsertIntoTable("Band", $Values, $DataTypes);
 	if ($Insert) 
 	{
 		echo "Insert was successful. "; 
@@ -258,7 +258,28 @@ function CreateTableForm()
 function DisplayData()
 {
     SetUpForm("H");
-    echo"All Data Will Show Here";
+	OpenConnectionandDatabase();
+    
+	$result = RunSelect("Band", "", "", "BandName", "");
+	
+		
+        echo "<table style='border:1px solid black'>";
+        echo "<th>Band</th><th>CDs Sold</th><th>Price</th><th>Manager %</th>
+		<th>Recording %</th><th>Advance Amt</th><th>Distributer</th><th>Manufacturing</th><th>Gig Date</th>";
+        while($row = mysqli_fetch_assoc($result))
+        {
+            echo"<tr>";
+            foreach($row as $col)
+            {
+                echo "<td style='border:1px solid black'>";
+                echo $col;
+                echo "</td>";
+            }
+            echo "</tr>";
+        }
+        echo "</table>";
+	
+	CloseConnection();
     FinishForm();
 }
 
