@@ -157,18 +157,22 @@ function ResultsForm()
 	$totalRev = $NumCd * $CdPrice;
 	
 	$totalManageFee=0;
+	$advanceValue=0;
 	
 	if($RecordingStudio == "RRRS")
 	{
 		$totalManageFee = 0.05 * $totalRev;
+		$recordingPercent = 0.05;
 	}
 	if($RecordingStudio == "STMS")
 	{
 		$totalManageFee = 0.10 * $totalRev;
+		$recordingPercent = 0.10;
 	}
 	if($RecordingStudio == "MSNS")
 	{
 		$totalManageFee = 0.15 * $totalRev;
+		$recordingPercent = 0.15;
 	}
 	if($Advance == "advance")
 	{
@@ -177,10 +181,12 @@ function ResultsForm()
 	if($ManagerFee == "45")
 	{
 		$ManagerFee = $totalRev * 1.45;
+		$MangerFeeDec = 0.45;
 	}
 	if($ManagerFee == "55")
 	{
 		$ManagerFee = $totalRev * 0.55;
+		$MangerFeeDec = 0.55;
 	}
 	
 	
@@ -210,8 +216,22 @@ function ResultsForm()
 	
 	$BandName's Net Income is $$netIncome. Next gig is $GigDate
 	";
+	OpenConnectionandDatabase();
+	$Values = array($BandName, $NumCd, $CdPrice, $MangerFeeDec,  $recordingPercent, $advanceValue, $DistFee, $ManuFac, $GigDate);
+	$DataTypes = array("varchar", "integer", "decimal", "decimal", "decimal", "decimal", "decimal", "decimal", "date");
+	$Insert = InsertIntoTable ("Band", $Values, $DataTypes);
+	if ($Insert) 
+	{
+		echo "Insert was successful. "; 
+	}
+	else 
+	{
+		echo "Insert failed. ";
+		
+	}
 	
 	echo"</div>";
+	CloseConnection();
 	FinishForm();
 }
 
@@ -219,7 +239,7 @@ function CreateTableForm()
 {
     SetUpForm("H");
 	OpenConnectionandDatabase();
-	$FieldNames = array("CDsSold", "Price", "ManagerPercent", "RecordingPercent", "AdvanceAmt", "Distributer", "Manufacturing", "GigDate");
+	$FieldNames = array("BandName", "CDsSold", "Price", "ManagerPercent", "RecordingPercent", "AdvanceAmt", "DistributerFee", "ManufacturingFee", "GigDate");
 	$DataTypes = array("varchar", "integer", "decimal", "decimal", "decimal", "decimal", "decimal", "decimal", "date");
 	$Sizes = array(30, 0, 8, 8, 8, 8, 8, 8, 0);
 	$Decimals = array(0, 0, 2, 2, 2, 2, 2, 2, 0);
