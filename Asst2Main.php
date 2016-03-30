@@ -218,8 +218,20 @@ function ResultsForm()
 function CreateTableForm()
 {
     SetUpForm("H");
-	
-    echo"Table has been created message will appear here";
+	OpenConnectionandDatabase();
+	$FieldNames = array("CDsSold", "Price", "ManagerPercent", "RecordingPercent", "AdvanceAmt", "Distributer", "Manufacturing", "GigDate");
+	$DataTypes = array("varchar", "integer", "decimal", "decimal", "decimal", "decimal", "decimal", "decimal", "date");
+	$Sizes = array(30, 0, 8, 8, 8, 8, 8, 8, 0);
+	$Decimals = array(0, 0, 2, 2, 2, 2, 2, 2, 0);
+	$Create = CreateTable("Band", $FieldNames, $DataTypes, $Sizes, $Decimals);
+	if($Create)
+	{
+		echo"Table has been created successfully";
+	}
+	else{
+		echo"Table was not created successfully";
+	}
+    CloseConnection();
     FinishForm();
 }
 

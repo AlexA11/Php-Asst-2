@@ -7,9 +7,9 @@
 		global $Connect;
 		$Host="localhost";
 		$UserName = "root";
-		$Password = "mysql";
+		$Password = "";
 		$Database = "test";
-	  	$Connect = mysqli_connect($Host, $UserName, $Password,$Database); 
+	  	$Connect = mysqli_connect($Host, $UserName, $Password, $Database); 
 		if (!$Connect) 
 		{
 			echo "Connection open failed.";
