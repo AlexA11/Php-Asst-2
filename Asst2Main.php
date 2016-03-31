@@ -1,4 +1,6 @@
 <?php
+//Alex Ash and Brett Akey
+
 include_once("Asst2Include.php");
 include_once("Asst2DatabaseFunctions.php"); 
 //Setup a form
