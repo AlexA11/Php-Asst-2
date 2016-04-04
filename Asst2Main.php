@@ -219,7 +219,7 @@ function ResultsForm()
 	$BandName's Net Income is $$netIncome. Next gig is $GigDate
 	";
 	OpenConnectionandDatabase();
-	$Values = array($BandName, $NumCd, $CdPrice, $MangerFeeDec,  $recordingPercent, $advanceValue, $DistFee, $ManuFac, $GigDate);
+	$Values = array($BandName, $NumCd, $CdPrice, $ManagerFee,  $totalManageFee, $advanceValue, $DistFee, $ManuFac, $GigDate);
 	$DataTypes = array("varchar", "integer", "decimal", "decimal", "decimal", "decimal", "decimal", "decimal", "date");
 	$Insert = InsertIntoTable("Band", $Values, $DataTypes);
 	if ($Insert) 
