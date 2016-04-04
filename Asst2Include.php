@@ -10,9 +10,7 @@ function WriteHeaders($Heading="Welcome",$TitleBar="MySite")
     <title>$TitleBar</title>
     <link rel=\"stylesheet\" type=\"text/css\" href=\"Asst2Style.css\">
 </head>
-<body>
-	
-	";
+<body>";
 };
 
 function DisplayLabel($Text)
@@ -27,7 +25,7 @@ function DisplayTextbox($Name, $Size, $Value)
 
 function DisplayContactInfo()
 {
-    echo"<footer class=\"bottom\" > <p>Questions?  Comments?</p> <a href=\"mailto:aash29@sl.on.ca\">aash29@sl.on.ca</a></footer>";
+    echo"<footer class=\"bottom\" > <p>Questions?  Comments?</p> <a href=\"mailto:aash29@student.sl.on.ca\">aash29@student.sl.on.ca</a></footer>";
 }
 
 function DisplayImage($FileName, $Alt, $Height="200", $Width="300")

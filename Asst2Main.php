@@ -9,7 +9,7 @@ function SetUpForm( $Character )
     WriteHeaders();
     echo "
     <div class = \"top\">
-	   Music - Student Full Name
+	   Music - Alex Ash and Brett Akey
 	</div>
     <div class = \"bigpiece\">
 	  <div class = \"leftpiece\"> 
@@ -164,17 +164,17 @@ function ResultsForm()
 	if($RecordingStudio == "RRRS")
 	{
 		$totalManageFee = 0.05 * $totalRev;
-		$recordingPercent = 0.05;
+		$recordingPercent = 5;
 	}
 	if($RecordingStudio == "STMS")
 	{
 		$totalManageFee = 0.10 * $totalRev;
-		$recordingPercent = 0.10;
+		$recordingPercent = 10;
 	}
 	if($RecordingStudio == "MSNS")
 	{
 		$totalManageFee = 0.15 * $totalRev;
-		$recordingPercent = 0.15;
+		$recordingPercent = 15;
 	}
 	if($Advance == "advance")
 	{
@@ -183,12 +183,12 @@ function ResultsForm()
 	if($ManagerFee == "45")
 	{
 		$ManagerFee = $totalRev * 1.45;
-		$MangerFeeDec = 0.45;
+		$ManagerFeeDec = 45;
 	}
 	if($ManagerFee == "55")
 	{
 		$ManagerFee = $totalRev * 0.55;
-		$MangerFeeDec = 0.55;
+		$ManagerFeeDec = 55;
 	}
 	
 	
@@ -219,7 +219,7 @@ function ResultsForm()
 	$BandName's Net Income is $$netIncome. Next gig is $GigDate
 	";
 	OpenConnectionandDatabase();
-	$Values = array($BandName, $NumCd, $CdPrice, $ManagerFee,  $totalManageFee, $advanceValue, $DistFee, $ManuFac, $GigDate);
+	$Values = array($BandName, $NumCd, $CdPrice, $ManagerFeeDec,  $recordingPercent, $advanceValue, $DistFee, $ManuFac, $GigDate);
 	$DataTypes = array("varchar", "integer", "decimal", "decimal", "decimal", "decimal", "decimal", "decimal", "date");
 	$Insert = InsertIntoTable("Band", $Values, $DataTypes);
 	if ($Insert) 
@@ -273,7 +273,7 @@ function DisplayData()
             echo"<tr>";
             foreach($row as $col)
             {
-                echo "<td style='border:1px solid black'>";
+                echo "<td style='border:1px solid black'>";				
                 echo $col;
                 echo "</td>";
             }
